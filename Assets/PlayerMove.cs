@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
-public class PlayerMove : ApolarMove, IPushable
+public class PlayerMove : ApolarMove, IPushable,IDamagable
 {
 
 
@@ -21,6 +21,10 @@ public class PlayerMove : ApolarMove, IPushable
     public CharacterController characterController;
 
     private Stack<GameObject> touching = new Stack<GameObject>();
+
+    public float health = 100;
+
+    float IDamagable.health { get => this.health; set => this.health = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -108,5 +112,30 @@ public class PlayerMove : ApolarMove, IPushable
     public void SetTouch(bool state)
     {
         throw new System.NotImplementedException();
+    }
+
+    public void AddDmg(float dmg)
+    {
+        health -= dmg;
+        if(health < 0)
+        {
+            Die();
+        }
+    }
+
+    public void RemoveDmg(float dmg)
+    {
+        health += dmg;
+    }
+
+    public void Die()
+    {
+        StartCoroutine(DieDelay());
+    }
+
+    IEnumerator DieDelay()
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(this.gameObject);
     }
 }
