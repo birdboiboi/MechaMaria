@@ -22,19 +22,14 @@ public class SecondaryPlayer : PlayerMove
         movement.y += gravity;
         if (movement.x != 0)
         {
-            dir = -(int)Mathf.Sign(Input.GetAxis("Horizontal"));
             anim.SetBool("isWalk", true);
         }
         else
         {
-            dir = 0;
             anim.SetBool("isWalk", false);
         }
 
-        if (Input.GetButton("Fire1"))
-        {
-            anim.Play("attack");
-        }
+      
 
 
         if (canMove)

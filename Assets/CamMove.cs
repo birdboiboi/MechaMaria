@@ -157,7 +157,7 @@ public class CamMove : ApolarMove
         Vector3 pos = cam.WorldToScreenPoint(playerToCheck.transform.position);
         float v = Mathf.Sign((int)((Screen.width / 2) - pos.x));
          playerToCheck.dir = (int)v;
-        Debug.Log("world "+(int)v);
+        //Debug.Log("world "+(int)v);
     }
 
 
