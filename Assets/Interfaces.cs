@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IDamagable
 {
-    public float health { get; set; }
+    //public float health { get; set; }
     public void AddDmg(float dmg);
     public void RemoveDmg(float dmg);
 
@@ -26,6 +26,9 @@ public interface ICombatable:IDamagable
     public void StrikeHigh(ICombatable other);
     public void StrikeMid(ICombatable other);
     public void StrikeLow(ICombatable other);
+
+    public int getBlockState();
+    public void StopBlock();
     public void BlockHigh();
     public void BlockMid();
     public void BlockLow();

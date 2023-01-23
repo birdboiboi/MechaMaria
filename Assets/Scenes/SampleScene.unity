@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 573220712}
   - component: {fileID: 573220711}
   m_Layer: 0
-  m_Name: DynamicHitBox
+  m_Name: DynamicHitBox(Player 1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -274,7 +274,8 @@ MonoBehaviour:
   movement: {x: 0, y: 0, z: 0}
   parent: {fileID: 732064667}
   polarOffset: {x: 0, y: 0, z: 1}
-  canDealDamage: 0
+  canDealDmg: 0
+  dmg: 10
 --- !u!65 &573220712
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -578,6 +579,7 @@ MonoBehaviour:
   maxAirTime: 10
   anim: {fileID: 1439722005}
   characterController: {fileID: 732064671}
+  health: 100
 --- !u!143 &732064671
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1018,6 +1020,7 @@ MonoBehaviour:
   maxAirTime: 10
   anim: {fileID: 712030842}
   characterController: {fileID: 1464516388}
+  health: 100
 --- !u!143 &1464516388
 CharacterController:
   m_ObjectHideFlags: 0
