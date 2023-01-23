@@ -27,6 +27,8 @@ public class CamMove : ApolarMove
     public PlayerMove leader;
     public int tempLeaderDir = 0;
 
+    public Camera cam;
+
 
 
     private Queue<PlayerMove> PlayerMoveQueue = new Queue<PlayerMove>();
@@ -53,7 +55,9 @@ public class CamMove : ApolarMove
         PlayerMoveQueue.TryPeek(out temp);
      
         MidPointPlayers =  ((Player1Pos.position) + (Player2Pos.position))/2;//(((Cart2Cyl(Player1Pos.position) + Cart2Cyl(Player2Pos.position)) / 2));//Player1Pos.position, Player2Pos.position, .5f);//linear 
-      
+        SetDirPlayer(Player1Move);
+        SetDirPlayer(Player2Move);
+
         diff = new Vector3((Player1Pos.position - Player2Pos.position).magnitude, 0, 0);
        
         Vector3 newPosPolar = (Cart2Cyl(MidPointPlayers) + Cart2Cyl( cameraOffset + axisRot.position + diff)) ;
@@ -145,6 +149,15 @@ public class CamMove : ApolarMove
         }
         
         
+    }
+
+    public void SetDirPlayer(PlayerMove playerToCheck)
+    {
+       
+        Vector3 pos = cam.WorldToScreenPoint(playerToCheck.transform.position);
+        float v = Mathf.Sign((int)((Screen.width / 2) - pos.x));
+         playerToCheck.dir = (int)v;
+        Debug.Log("world "+(int)v);
     }
 
 
